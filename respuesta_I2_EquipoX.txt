@@ -17,3 +17,52 @@ d- ¿Los datos que tenía en mi repositorio, editados por mi, se pierden si
  actualización que se intenta traer, Git pedirá al usuario que resuelva el 
  conflicto manualmente, decidiendo qué información conservar antes de finalizar 
  la integración.
+
+ e- realizar un listado, paso a paso, de los comandos necesarios para resolver este tp por orden de ejecucion de los mismo con los apellidos y nombre de los alumnos
+ Integrantes:
+
+ALFA: Santiago Rens
+
+BETA: Tomas Bolotnicoff
+
+GAMMA: Santiago Crudele
+
+Orden de ejecución de comandos:
+
+Clonar el repositorio (Fork propio):
+git clone https://github.com/SantiRens/TP_UB_i2_Equipo.git
+
+Entrar a la carpeta del proyecto:
+cd TP_UB_i2_Equipo
+
+Vincular el repositorio original de BETA (Tomas):
+git remote add beta https://github.com/tomas-maker2/TP_UB_i2_Equipo.git
+
+Sincronizar cambios iniciales de BETA:
+git pull beta main
+
+Crear y saltar a la rama para generar el conflicto:
+git checkout -b ajuste-alfa
+
+Modificar el archivo fork.txt (Edición manual en VS Code) y guardar.
+
+Preparar y confirmar el cambio en la rama local:
+git add fork.txt
+git commit -m "ALFA: Cambio en linea 2 para generar conflicto"
+
+Traer los cambios de BETA (que incluyen lo de GAMMA) para provocar el choque:
+git fetch beta
+git merge beta/main
+
+Resolución manual del conflicto:
+(Se abré el archivo en VS Code, se eliminan las marcas <<<<, ====, >>>> y se unifican los datos).
+
+Finalizar el merge tras la resolución:
+git add fork.txt
+git commit -m "ALFA: Conflicto resuelto exitosamente"
+
+Subir la rama final a GitHub:
+git push origin ajuste-alfa
+
+Crear Pull Request (PR):
+(Se realiza desde la interfaz web de GitHub desde ajuste-alfa hacia el main de Tomas).
